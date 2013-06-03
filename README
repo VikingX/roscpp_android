@@ -4,7 +4,7 @@ for rosbag for android.
 The do_everything.sh script will call all the other scripts
 sequentially, you just have to give it a prefix path:
 
- $ ./do_everything ../workspace
+ $ ./do_everything.sh ../workspace
 
 You can also run each script individually, most of them have
 a minimalistic help string to give you an idea of their parameters.
