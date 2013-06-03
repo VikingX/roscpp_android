@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 my_loc="$(cd "$(dirname $0)" && pwd)"
 source $my_loc/config.sh
