@@ -25,9 +25,6 @@ for p in $tully; do
     cd $prefix/$p && git checkout android
 done
 
-cd $prefix/ros_comm
-git apply $my_loc/files/ros_comm/*.patch
-
 cd $prefix/roscpp_core && git checkout android
 
 [ "$CMAKE_PREFIX_PATH" = "" ] && die 'could not find target basedir. Have you run build_catkin.sh and sourced setup.bash?'

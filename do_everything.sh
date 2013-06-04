@@ -22,8 +22,10 @@ run_cmd() {
     $my_loc/$cmd $@ || die "$cmd $@ died with error code $?"
 }
 
-[ -d $prefix/android-ndk-r8e ] || run_cmd get_ndk $prefix
-export ANDROID_NDK=$prefix/android-ndk-r8e
+if [ -z $ANDROID_NDK ] ; then
+    [ -d $prefix/android-ndk-r8e ] || run_cmd get_ndk $prefix
+    export ANDROID_NDK=$prefix/android-ndk-r8e
+fi
 
 [ -d $standalone_toolchain_path ] || run_cmd setup_standalone_toolchain
 
