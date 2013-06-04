@@ -27,25 +27,32 @@ if [ -z $ANDROID_NDK ] ; then
     export ANDROID_NDK=$prefix/android-ndk-r8e
 fi
 
-[ -d $standalone_toolchain_path ] || run_cmd setup_standalone_toolchain
+#[ -d $standalone_toolchain_path ] || run_cmd setup_standalone_toolchain
 
 mkdir -p $prefix/libs
 
-[ -d $prefix/libs/boost_1_47_0 ] || run_cmd get_boost $prefix/libs
+if [ ! -d $prefix/libs/boost_1_47_0 ]; then
+    run_cmd get_boost $prefix/libs
+    run_cmd patch_boost $prefix/libs/boost_1_47_0
+    run_cmd prepare_boost $prefix/libs/boost_1_47_0
+fi
+
 [ -d $prefix/libs/bzip2-1.0.6 ] || run_cmd get_bzip2 $prefix/libs
-[ -d $prefix/libs/gtest-1.6.0 ] || run_cmd get_gtest $prefix/libs
+#[ -d $prefix/libs/gtest-1.6.0 ] || run_cmd get_gtest $prefix/libs
 [ -d $prefix/libs/catkin ] || run_cmd get_catkin $prefix/libs
 [ -d $prefix/libs/console_bridge ] || run_cmd get_console_bridge $prefix/libs
 
-run_cmd build_catkin $prefix/libs/catkin $prefix/target
+[ -d $prefix/target ] || mkdir -p $prefix/target
+export CMAKE_PREFIX_PATH=$prefix/target
+( cd $prefix && download 'https://raw.github.com/taka-no-me/android-cmake/master/android.toolchain.cmake' )
+export RBA_TOOLCHAIN=$prefix/android.toolchain.cmake
+
+run_cmd build_catkin $prefix/libs/catkin
 . $prefix/target/setup.bash
 run_cmd get_ros_stuff $prefix/libs
 
-run_cmd patch_boost $prefix/libs/boost_1_47_0
-run_cmd prepare_boost $prefix/libs/boost_1_47_0
 run_cmd build_boost $prefix/libs/boost_1_47_0
-
-run_cmd build_bzip2 $prefix/libs/bzip2-1.0.6
-run_cmd build_gtest $prefix/libs/gtest-1.6.0
+run_cmd build_bzip2 $prefix/libs/bzip2
+#run_cmd build_gtest $prefix/libs/gtest-1.6.0
 run_cmd build_console_bridge $prefix/libs/console_bridge
 run_cmd build_rosbag

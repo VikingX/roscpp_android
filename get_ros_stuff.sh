@@ -16,12 +16,12 @@ prefix=$(cd $1 && pwd)
 
 official="gencpp genlisp genmsg genpy message_generation message_runtime roscpp_core std_msgs"
 for p in $official; do
-    git clone https://github.com/ros/$p.git $prefix/$p
+    [ -d $prefix/$p ] || git clone https://github.com/ros/$p.git $prefix/$p
 done
 
 tully="ros_comm"
 for p in $tully; do
-    git clone https://github.com/tfoote/$p.git $prefix/$p
+    [ -d $prefix/$p ] || git clone https://github.com/tfoote/$p.git $prefix/$p
     cd $prefix/$p && git checkout android
 done
 

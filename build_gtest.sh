@@ -20,7 +20,7 @@ prefix=$(cd $1 && pwd)
 
 cd $1
 mkdir -p build && cd build
-cmake .. -DCMAKE_TOOLCHAIN_FILE=$standalone_toolchain_path/android.toolchain.cmake \
+cmake .. -DCMAKE_TOOLCHAIN_FILE=$RBA_TOOLCHAIN \
     -DANDROID_TOOLCHAIN_NAME=$toolchain -DANDROID_NATIVE_API_LEVEL=$platform $host64
 make
 
