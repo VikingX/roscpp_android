@@ -38,7 +38,6 @@ if [ ! -d $prefix/libs/boost_1_47_0 ]; then
 fi
 
 [ -d $prefix/libs/bzip2-1.0.6 ] || run_cmd get_bzip2 $prefix/libs
-#[ -d $prefix/libs/gtest-1.6.0 ] || run_cmd get_gtest $prefix/libs
 [ -d $prefix/libs/catkin ] || run_cmd get_catkin $prefix/libs
 [ -d $prefix/libs/console_bridge ] || run_cmd get_console_bridge $prefix/libs
 
@@ -53,7 +52,6 @@ run_cmd get_ros_stuff $prefix/libs
 
 run_cmd build_boost $prefix/libs/boost_1_47_0
 run_cmd build_bzip2 $prefix/libs/bzip2
-#run_cmd build_gtest $prefix/libs/gtest-1.6.0
 run_cmd build_console_bridge $prefix/libs/console_bridge
 run_cmd build_rosbag
 
