@@ -17,7 +17,7 @@ if [ ! -d $1 ]; then
 fi
 
 cd $1
-ln -s $CMAKE_PREFIX_PATH/include ./
-ln -s $CMAKE_PREFIX_PATH/lib ./
+ln -fs $CMAKE_PREFIX_PATH/include ./
+ln -fs $CMAKE_PREFIX_PATH/lib ./
 
 cp $my_loc/files/rba/*.mk ./
