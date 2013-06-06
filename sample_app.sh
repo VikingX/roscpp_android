@@ -25,7 +25,7 @@ rosbag_ndk=$(basename $rbndk)
 mkdir -p $lib_name/jni/src
 prefix=$(cd $lib_name && pwd)
 
-android create project -n $lib_name -t 1 -p $prefix -k $package_name -a default
+android create project -n $lib_name -t 1 -p $prefix -k $package_name -a $lib_name
 
 subst_list="lib_name package_name ndk_path module_path rosbag_ndk"
 for s in $subst_list; do
