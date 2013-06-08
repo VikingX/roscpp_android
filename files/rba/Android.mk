@@ -1,8 +1,8 @@
 LOCAL_PATH := $(call my-dir)
 
-stlibs := boost_date_time boost_filesystem boost_program_options boost_regex
-stlibs += boost_system boost_thread cpp_common console_bridge
-stlibs += rosbag_storage roscpp_serialization rostime bz2
+stlibs := rosbag_storage boost_date_time boost_filesystem boost_program_options
+stlibs += boost_regex boost_system boost_thread cpp_common console_bridge
+stlibs += roscpp_serialization rostime bz2
 
 shlibs := $(stlibs)
 
