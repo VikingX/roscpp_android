@@ -17,4 +17,4 @@ URL=https://github.com/ros/console_bridge.git
 
 git clone $URL $prefix/console_bridge
 cd $prefix/console_bridge
-git apply $my_loc/files/console_bridge/*.patch
+
