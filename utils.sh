@@ -8,7 +8,11 @@ die() {
 }
 
 download() {
-    cmd_exists curl && curl -L $1 -O || wget $1
+    if [ ! -z $1 ]; then
+        cmd_exists curl && curl -L $1 -O || wget $1
+    else 
+        echo "skipping download of $1 as it's already local"
+    fi
 }
 
 download_bz2() {
