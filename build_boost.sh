@@ -20,6 +20,7 @@ sh bootstrap.sh --with-libraries=$boost_libs
 ./b2 toolset=gcc-android4.6 link=static runtime-link=static target-os=linux --stagedir=android
 
 [ "$CMAKE_PREFIX_PATH" = "" ] && die 'could not find target basedir. Have you run build_catkin.sh and sourced setup.bash?'
+mkdir -p $CMAKE_PREFIX_PATH/lib
 cd $CMAKE_PREFIX_PATH/lib
 ln -sf $prefix/android/lib/lib*.a ./
 mkdir -p ../include && cd ../include
