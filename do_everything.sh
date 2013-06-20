@@ -44,7 +44,7 @@ fi
 [ -d $prefix/target ] || mkdir -p $prefix/target
 export CMAKE_PREFIX_PATH=$prefix/target
 
-[ -e $prefix/android.toolchain.cmake ] || ( cd $prefix && download 'https://raw.github.com/taka-no-me/android-cmake/master/android.toolchain.cmake' )
+[ -e $prefix/android.toolchain.cmake ] || ( cd $prefix && download 'https://raw.github.com/taka-no-me/android-cmake/master/android.toolchain.cmake' && cat $my_loc/files/android.toolchain.cmake.addendum >> $prefix/android.toolchain.cmake)
 export RBA_TOOLCHAIN=$prefix/android.toolchain.cmake
 
 run_cmd build_catkin $prefix/libs/catkin
