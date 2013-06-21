@@ -14,7 +14,7 @@ cmd_exists git || die 'git was not found'
 
 prefix=$(cd $1 && pwd)
 
-official="gencpp genlisp genmsg genpy message_generation message_runtime roscpp_core std_msgs"
+official="gencpp genlisp genmsg genpy message_generation message_runtime roscpp_core std_msgs common_msgs"
 for p in $official; do
     [ -d $prefix/$p ] || git clone https://github.com/ros/$p.git $prefix/$p
 done
