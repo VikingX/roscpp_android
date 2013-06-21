@@ -10,6 +10,12 @@
 #include "std_msgs/String.h"
 #include "std_msgs/Int32.h"
 
+#include "sensor_msgs/Image.h"
+#include "sensor_msgs/CompressedImage.h"
+#include "sensor_msgs/Imu.h"
+#include "sensor_msgs/CameraInfo.h"
+
+
 #include <boost/foreach.hpp>
 
 #include <android_native_app_glue.h>
@@ -36,6 +42,10 @@ void readbag() {
     std::vector<std::string> topics;
     topics.push_back(std::string("chatter"));
     topics.push_back(std::string("numbers"));
+    topics.push_back(std::string("images"));
+    topics.push_back(std::string("camera_info"));
+    topics.push_back(std::string("compressed_images"));
+    topics.push_back(std::string("imu"));
 
     rosbag::View view(bag, rosbag::TopicQuery(topics));
 
@@ -43,11 +53,38 @@ void readbag() {
     {
         std_msgs::String::ConstPtr s = m.instantiate<std_msgs::String>();
         if (s != NULL)
-            log("this should read 'foo': %s", s->data.c_str());
+            log("String this should read 'foo': %s", s->data.c_str());
 
         std_msgs::Int32::ConstPtr i = m.instantiate<std_msgs::Int32>();
         if (i != NULL)
-            log("this should read 42: %d", i->data);
+            log("Int32 this should read 42: %d", i->data);
+
+        sensor_msgs::Image::ConstPtr im = m.instantiate<sensor_msgs::Image>();
+        if (im != NULL)
+            log("Image this should read 640x480: %dx%d", im->width, im->height);
+
+        sensor_msgs::CameraInfo::ConstPtr ci = m.instantiate<sensor_msgs::CameraInfo>();
+        if (ci != NULL)
+            log("CameraInfo this should read 640x480: %dx%d", ci->width, ci->height);
+
+        sensor_msgs::CompressedImage::ConstPtr cim = m.instantiate<sensor_msgs::CompressedImage>();
+        if (cim != NULL)
+            log("CompressedImage this should read foobar: %s", cim->format.c_str());
+
+        sensor_msgs::Imu::ConstPtr imu = m.instantiate<sensor_msgs::Imu>();
+        if (imu != NULL)
+          log("Imu this should read 1 2 3 4 5 6 7 8 9: %g %g %g %g %g %g %g %g %g", 
+              imu->orientation_covariance[0],
+              imu->orientation_covariance[1],
+              imu->orientation_covariance[2],
+              imu->orientation_covariance[3],
+              imu->orientation_covariance[4],
+              imu->orientation_covariance[5],
+              imu->orientation_covariance[6],
+              imu->orientation_covariance[7],
+              imu->orientation_covariance[8]
+              
+              );
     }
 
     bag.close();
@@ -73,10 +110,32 @@ void testbag() {
     std_msgs::Int32 i;
     i.data = 42;
 
+    sensor_msgs::Image image;
+    image.height = 480;
+    image.width = 640;
+
+    sensor_msgs::CameraInfo camera_info;
+    image.height = 480;
+    image.width = 640;
+    
+    sensor_msgs::CompressedImage cimage;
+    cimage.format = "foobar";
+
+    sensor_msgs::Imu imu;
+    for (uint i = 0; i < 9; i++)
+    {
+      imu.orientation_covariance[i] = (double)i+1.0;
+    }
+
     log("writing stuff into bag");
     try {
         bag.write("chatter", ros::Time::now(), str);
         bag.write("numbers", ros::Time::now(), i);
+        bag.write("images", ros::Time::now(), image);
+        bag.write("compressed_images", ros::Time::now(), cimage);
+        bag.write("camera_info", ros::Time::now(), camera_info);
+        bag.write("imu", ros::Time::now(), imu);
+
     } catch (const std::exception &e) {
         log("Oops! could not write to bag: %s, %s", e.what(), strerror(errno));
         return;
