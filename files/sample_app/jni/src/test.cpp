@@ -3,6 +3,7 @@
 #include <string.h>
 #include <errno.h>
 #include <vector>
+#include <fstream>
 #include <android/log.h>
 #include "rosbag/bag.h"
 #include "rosbag/view.h"
@@ -69,7 +70,7 @@ void readbag() {
 
         sensor_msgs::CompressedImage::ConstPtr cim = m.instantiate<sensor_msgs::CompressedImage>();
         if (cim != NULL)
-            log("CompressedImage this should read foobar: %s", cim->format.c_str());
+            log("CompressedImage this should read png: %s", cim->format.c_str());
 
         sensor_msgs::Imu::ConstPtr imu = m.instantiate<sensor_msgs::Imu>();
         if (imu != NULL)
@@ -121,6 +122,24 @@ void testbag() {
     sensor_msgs::CompressedImage cimage;
     cimage.format = "foobar";
 
+    std::ifstream image_file;
+    image_file.open("/sdcard/ROS.png", std::ios::binary);
+    int file_length;
+    image_file.seekg(0, std::ios::end);
+    file_length = image_file.tellg();
+    image_file.seekg(0, std::ios::beg);
+    
+    if (file_length > 0)
+    {
+      log("Using real compressed image from /sdcard/ROS.png");
+      cimage.data.reserve(file_length);
+      cimage.data.assign(std::istreambuf_iterator<char>(image_file),
+                         std::istreambuf_iterator<char>());
+    }
+    else
+      log("Didn't find file /sdcard/ROS.png");
+
+
     sensor_msgs::Imu imu;
     for (uint i = 0; i < 9; i++)
     {
@@ -132,7 +151,7 @@ void testbag() {
         bag.write("chatter", ros::Time::now(), str);
         bag.write("numbers", ros::Time::now(), i);
         bag.write("images", ros::Time::now(), image);
-        bag.write("compressed_images", ros::Time::now(), cimage);
+        bag.write("images/compressed", ros::Time::now(), cimage);
         bag.write("camera_info", ros::Time::now(), camera_info);
         bag.write("imu", ros::Time::now(), imu);
 
