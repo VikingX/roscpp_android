@@ -11,6 +11,6 @@ if [ $# != 1 ] || [ $1 == '-h' ] || [ $1 == '--help' ]; then
 fi
 
 prefix=$(cd $1 && pwd)
-URL=https://github.com/po1/bzip2_cmake.git
+URL=https://github.com/osrf/bzip2_cmake.git
 
 [ -d $prefix/bzip2 ] || git clone $URL $prefix/bzip2
