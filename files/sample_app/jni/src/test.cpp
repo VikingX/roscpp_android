@@ -274,7 +274,7 @@ void play_bag() {
   
         
         log("HALFTIME HALFTIME HALFTIME");
-        bag_player.set_time_scale(0.5);
+        bag_player.set_playback_speed(0.5);
         start_time = ros::Time(now());
         imu_first_message = ros::Time();
         image_first_message = ros::Time();
@@ -282,7 +282,7 @@ void play_bag() {
         
 
         log("DOUBLETIME DOUBLETIME DOUBLETIME");
-        bag_player.set_time_scale(2.0);
+        bag_player.set_playback_speed(2.0);
         start_time = ros::Time(now());
         imu_first_message = ros::Time();
         image_first_message = ros::Time();
@@ -331,7 +331,11 @@ void ev_loop(android_app *papp) {
                 log("ready? playing back bagfile with callbacks!");
                 play_bag();
                 step++;
-              }            
+              }
+            else if (step == 5) {
+              log("Demo done.");
+              step++;
+            }
             ps->process(papp, ps);
         }
         if (papp->destroyRequested) {
