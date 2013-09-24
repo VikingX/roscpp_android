@@ -1,7 +1,7 @@
 LOCAL_PATH := $(call my-dir)
 
-stlibs := rosbag_storage boost_date_time boost_filesystem boost_program_options
-stlibs += boost_regex boost_system boost_thread cpp_common console_bridge
+stlibs := tf2 boost_date_time boost_filesystem boost_program_options
+stlibs += boost_regex boost_system boost_thread boost_signals cpp_common console_bridge
 stlibs += roscpp_serialization rostime bz2
 
 shlibs := $(stlibs)
@@ -23,7 +23,7 @@ endef
 $(foreach stlib,$(stlibs),$(eval $(call include_stlib,$(stlib))))
 
 include $(CLEAR_VARS)
-LOCAL_MODULE    := rosbag
+LOCAL_MODULE    := tf2a
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/include
 LOCAL_EXPORT_CPPFLAGS := -fexceptions -frtti
 #LOCAL_SRC_FILES := dummy.cpp

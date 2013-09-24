@@ -54,10 +54,10 @@ run_cmd get_ros_stuff $prefix/libs
 run_cmd build_boost $prefix/libs/boost_1_47_0
 run_cmd build_bzip2 $prefix/libs/bzip2
 run_cmd build_console_bridge $prefix/libs/console_bridge
-run_cmd build_rosbag
+run_cmd build_tf2
 
-run_cmd setup_ndk_project $prefix/rosbag_ndk
-( cd $prefix && run_cmd sample_app sample_app $prefix/rosbag_ndk )
+run_cmd setup_ndk_project $prefix/tf2_ndk
+( cd $prefix && run_cmd sample_app sample_app $prefix/tf2_ndk )
 
 echo
 echo 'done.'
@@ -65,8 +65,8 @@ echo 'summary of what just happened:'
 echo '  target/      was used to build static libraries for ros software'
 echo '    include/   contains headers'
 echo '    lib/       contains static libraries'
-echo '  rosbag_ndk/  is a NDK sub-project that can be imported into an NDK app'
-echo '  sample_app/  is an example of such an app, a native activity that uses rosbag'
+echo '  tf2_ndk/     is a NDK sub-project that can be imported into an NDK app'
+echo '  sample_app/  is an example of such an app, a native activity that uses tf2'
 echo
 echo 'you might now cd into sample_app/, run "ant debug install", and if an'
 echo 'android emulator is running, the app will be flashed onto it.'

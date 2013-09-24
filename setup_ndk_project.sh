@@ -6,7 +6,7 @@ source $my_loc/utils.sh
 
 if [ $# != 1 ] || [ $1 == '-h' ] || [ $1 == '--help' ]; then
     echo "Usage: $0 project_path"
-    echo "  example: $0 /home/user/my_workspace/rosbag_ndk"
+    echo "  example: $0 /home/user/my_workspace/tf2_ndk"
     exit 1
 fi
 
@@ -20,4 +20,4 @@ cd $1
 ln -fs $CMAKE_PREFIX_PATH/include ./
 ln -fs $CMAKE_PREFIX_PATH/lib ./
 
-cp $my_loc/files/rba/*.mk ./
+cp $my_loc/files/tfa/*.mk ./

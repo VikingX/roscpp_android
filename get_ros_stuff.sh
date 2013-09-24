@@ -19,13 +19,13 @@ for p in $official; do
     [ -d $prefix/$p ] || git clone https://github.com/ros/$p.git $prefix/$p
 done
 
-tully="ros_comm"
-for p in $tully; do
-    [ -d $prefix/$p ] || git clone https://github.com/tfoote/$p.git $prefix/$p
+chadrockey="geometry_experimental"
+for p in $chadrockey; do
+    [ -d $prefix/$p ] || git clone https://github.com/chadrockey/$p.git $prefix/$p
     cd $prefix/$p && git checkout android
 done
 
-cd $prefix/roscpp_core && git checkout android
+#cd $prefix/roscpp_core && git checkout android
 
 [ "$CMAKE_PREFIX_PATH" = "" ] && die 'could not find target basedir. Have you run build_catkin.sh and sourced setup.bash?'
 
@@ -35,7 +35,8 @@ for p in $official; do
     ln -sf $prefix/$p ./
 done
 
-ln -sf $prefix/ros_comm/tools/rosbag_storage ./
-ln -sf $prefix/ros_comm/test/test_rosbag_storage ./
+# Make links to which tf2 components we want on Android
+ln -sf $prefix/geometry_experimental/tf2_msgs ./
+ln -sf $prefix/geometry_experimental/tf2 ./
 
 exit 0
