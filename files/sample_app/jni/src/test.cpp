@@ -37,7 +37,7 @@ static double now(void) {
 #define LASTERR strerror(errno)
 
 size_t true_random_index(const size_t n){
-	const size_t divisor = RAND_MAX/(n);
+  const size_t divisor = RAND_MAX/(n);
 
   size_t k;
   do { k = std::rand() / divisor; } while (k >= n);
@@ -53,22 +53,22 @@ double fRand(double fMin, double fMax)
 }
 
 std::set<std::string> unique_frames_from_map(std::map<std::string, std::vector<std::string> >& map){
-	std::set<std::string> out_set;
-	for (std::map<std::string, std::vector<std::string> >::iterator it=map.begin(); it!=map.end(); ++it){
-		out_set.insert(it->first);
-		for (std::vector<std::string>::iterator vit = it->second.begin() ; vit != it->second.end(); ++vit){
-			out_set.insert(*vit);
-		}
-	}
-	return out_set;
+  std::set<std::string> out_set;
+  for (std::map<std::string, std::vector<std::string> >::iterator it=map.begin(); it!=map.end(); ++it){
+    out_set.insert(it->first);
+    for (std::vector<std::string>::iterator vit = it->second.begin() ; vit != it->second.end(); ++vit){
+      out_set.insert(*vit);
+    }
+  }
+  return out_set;
 }
 
 void create_pr2_tree_map(std::map<std::string, std::vector<std::string> >& map){
-	std::vector<std::string> vec;
-	vec.push_back("base_link");
-	map["base_footprint"] = vec; vec.clear();
+  std::vector<std::string> vec;
+  vec.push_back("base_link");
+  map["base_footprint"] = vec; vec.clear();
 
-	std::string a[] = { "bl_caster_rotation_link", "br_caster_rotation_link", "fl_caster_rotation_link", "fr_caster_rotation_link", "torso_lift_link", "torso_lift_motor_screw_link", "base_bellow_link", "base_laser_link" };
+  std::string a[] = { "bl_caster_rotation_link", "br_caster_rotation_link", "fl_caster_rotation_link", "fr_caster_rotation_link", "torso_lift_link", "torso_lift_motor_screw_link", "base_bellow_link", "base_laser_link" };
   vec.insert(vec.end(), a, a+8);
   map["base_link"] = vec; vec.clear();
 
@@ -290,76 +290,69 @@ void create_pr2_tree_map(std::map<std::string, std::vector<std::string> >& map){
 }
 
 void insert_pr2_tree(tf2::BufferCore& buffer, std::map<std::string, std::vector<std::string> >& map, ros::Time& t, bool all_static){
-	geometry_msgs::TransformStamped tfs;
-	tfs.header.stamp = t;
-	tfs.header.seq = 100;
-	tfs.transform.translation.x = 1.0;
-	tfs.transform.rotation.w = 1.0;
-	std::string authority = "test";
+  geometry_msgs::TransformStamped tfs;
+  tfs.header.stamp = t;
+  tfs.header.seq = 100;
+  tfs.transform.translation.x = 1.0;
+  tfs.transform.rotation.w = 1.0;
+  std::string authority = "test";
 
 
 
-	// Insert PR2 map
-	for (std::map<std::string, std::vector<std::string> >::iterator it=map.begin(); it!=map.end(); ++it){
-		tfs.header.frame_id = it->first;
-		for (std::vector<std::string>::iterator vit = it->second.begin() ; vit != it->second.end(); ++vit){
-			tfs.child_frame_id = *vit;
-			buffer.setTransform(tfs, authority, all_static);
-		}
-	}
+  // Insert PR2 map
+  for (std::map<std::string, std::vector<std::string> >::iterator it=map.begin(); it!=map.end(); ++it){
+    tfs.header.frame_id = it->first;
+    for (std::vector<std::string>::iterator vit = it->second.begin() ; vit != it->second.end(); ++vit){
+      tfs.child_frame_id = *vit;
+      buffer.setTransform(tfs, authority, all_static);
+    }
+  }
 }
 
 void lookup_transforms(tf2::BufferCore& buffer, std::set<std::string> frame_ids){
-	std::string frame1 = "child";
-	std::string frame2 = "parent";
-	geometry_msgs::TransformStamped tfs;
+  std::string frame1 = "child";
+  std::string frame2 = "parent";
+  geometry_msgs::TransformStamped tfs;
 
-	double start = now();
-	double num_lookups = 1e6;
-	double tree_depth = 0.0;
-	std::vector<std::string> set_vector(frame_ids.begin(), frame_ids.end());  // Want constant time element indexing
-	size_t n_frames = set_vector.size();
-	std::stringstream rs;
-	rs << num_lookups << " random lookups - on " << n_frames << " total frames";
-	log(rs.str().c_str());
-	for(size_t i = 0; i < num_lookups; i++){
-		frame1 = set_vector[true_random_index(n_frames)];
-		frame2 = set_vector[true_random_index(n_frames)];
-		ros::Time lookup_time(fRand(10.0, 20.0));
-		try{
-	     tfs = buffer.lookupTransform(frame1, frame2, lookup_time);
-	     tree_depth += abs(tfs.transform.translation.x);
-	  } catch(const tf2::ConnectivityException& e){
-	  	log("CONNECTIVITY EXCEPTION");
-		} catch(const tf2::ExtrapolationException& e){
-			log("EXTRAPOLATION EXCEPTION");
-		} catch(const tf2::LookupException& e){
-			log("LOOKUP EXCEPTION");
-		} catch (...) {
-		  log("SUPER BAD EXCEPTION");
-		}
-	}	
+  double num_lookups = 1e5;
+  double tree_depth = 0.0;
+  std::vector<std::string> set_vector(frame_ids.begin(), frame_ids.end());  // Want constant time element indexing
+  size_t n_frames = set_vector.size();
+  std::stringstream rs;
+  rs << num_lookups << " random lookups - on " << n_frames << " total frames";
+  log(rs.str().c_str());
+  double start = now();
+  for(size_t i = 0; i < num_lookups; i++){
+    frame1 = set_vector[true_random_index(n_frames)];
+    frame2 = set_vector[true_random_index(n_frames)];
+    ros::Time lookup_time(fRand(10.0, 20.0));
+    try{
+       tfs = buffer.lookupTransform(frame1, frame2, lookup_time);
+       tree_depth += abs(tfs.transform.translation.x);
+    } catch(const tf2::ConnectivityException& e){
+      log("CONNECTIVITY EXCEPTION");
+    } catch(const tf2::ExtrapolationException& e){
+      log("EXTRAPOLATION EXCEPTION");
+    } catch(const tf2::LookupException& e){
+      log("LOOKUP EXCEPTION");
+    } catch (...) {
+      log("SUPER BAD EXCEPTION");
+    }
+  } 
 
-	double end = now();
-	double avg_depth = tree_depth / num_lookups;
+  double end = now();
+  double avg_depth = tree_depth / num_lookups;
 
-	std::stringstream st;
-	st << "Start time: " << start << "\nEnd time: " << end
+  std::stringstream st;
+  st << "Start time: " << start << "\nEnd time: " << end
   << "\n Diff: " << end - start << "\n Avg: " << (end-start)/num_lookups
   << "\n Avg tf tree depth:" << avg_depth;
-	log(st.str().c_str());
-
-	
-
-	
-	//std::stringstream ss;
-	//ss << tfs;
-	//log(ss.str().c_str());
+  log(st.str().c_str());
 }
 
 
 void ev_loop(android_app *papp) {
-	int32_t lr;
+  int32_t lr;
     int32_t le;
 
     int step = 1;
@@ -371,11 +364,11 @@ void ev_loop(android_app *papp) {
 
     log("creating buffer_core");
 
-		tf2::BufferCore b_core;
+    tf2::BufferCore b_core;
 
-		log("generating pr2 tree map");
-		std::map<std::string, std::vector<std::string> > map;
-		create_pr2_tree_map(map);
+    log("generating pr2 tree map");
+    std::map<std::string, std::vector<std::string> > map;
+    create_pr2_tree_map(map);
 
     while (true) {
         lr = ALooper_pollAll(-1, NULL, &le, (void **) &ps);
@@ -385,31 +378,31 @@ void ev_loop(android_app *papp) {
         if (ps) {
             log("event received");
             if (step == 1) {   
-					    log("inserting transforms");
+              log("inserting transforms");
 
-					    log("inserting pr2 maps into buffer");
-					    double dt = 0.01;
-					    for(double t = 10.0; t < 20.0; t=t+dt){
-					    	ros::Time rt(t);
-					    	insert_pr2_tree(b_core, map, rt, false);
-					    }
-					    // Once more to know we have the end time
-					    ros::Time rt(20.0);
-					    insert_pr2_tree(b_core, map, rt, false);
+              log("inserting pr2 maps into buffer");
+              double dt = 0.01;
+              for(double t = 10.0; t < 20.0; t=t+dt){
+                ros::Time rt(t);
+                insert_pr2_tree(b_core, map, rt, false);
+              }
+              // Once more to know we have the end time
+              ros::Time rt(20.0);
+              insert_pr2_tree(b_core, map, rt, false);
 
-					    std::string all_frames = b_core.allFramesAsString();
-					    log(all_frames.c_str());
-					    	
-					    step++;
+              std::string all_frames = b_core.allFramesAsString();
+              log(all_frames.c_str());
+                
+              step++;
             } else if(step == 2){
-            	log("looking up transform");
-            	std::set<std::string> frame_ids = unique_frames_from_map(map);
-            	log("set contains:");
-            	for (std::set<std::string>::iterator it=frame_ids.begin(); it!=frame_ids.end(); ++it){
-            		log(it->c_str());
-            	}
-            	lookup_transforms(b_core, frame_ids);
-            	step++;
+              log("looking up transform");
+              std::set<std::string> frame_ids = unique_frames_from_map(map);
+              log("set contains:");
+              for (std::set<std::string>::iterator it=frame_ids.begin(); it!=frame_ids.end(); ++it){
+                log(it->c_str());
+              }
+              lookup_transforms(b_core, frame_ids);
+              step++;
             } else if (step == 3) {
               log("Demo done.");
               step++;
