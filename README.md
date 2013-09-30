@@ -1,5 +1,5 @@
 These scripts will (hopefully) help you build static libraries
-for rosbag for android and setup a sample application.
+for tf2 for android and setup a sample application.
 
 You will need android SDK installed and the 'android' program
 location in the $PATH.
