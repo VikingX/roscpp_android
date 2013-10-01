@@ -54,8 +54,8 @@ run_cmd build_boost $prefix/libs/boost_1_47_0
 run_cmd build_console_bridge $prefix/libs/console_bridge
 run_cmd build_tf2
 
-#run_cmd setup_ndk_project $prefix/tf2_ndk
-#( cd $prefix && run_cmd sample_app sample_app $prefix/tf2_ndk )
+run_cmd setup_ndk_project $prefix/tf2_ndk
+( cd $prefix && run_cmd sample_app sample_app $prefix/tf2_ndk )
 
 echo
 echo 'done.'
