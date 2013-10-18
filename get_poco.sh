@@ -1,21 +1,16 @@
 #!/bin/bash
-
+ 
 my_loc="$(cd "$(dirname $0)" && pwd)"
 source $my_loc/config.sh
 source $my_loc/utils.sh
-
+ 
 if [ $# != 1 ] || [ $1 == '-h' ] || [ $1 == '--help' ]; then
     echo "Usage: $0 prefix_path"
     echo "  example: $0 /home/user/my_workspace"
     exit 1
 fi
-
-cmd_exists git || die 'git was not found'
-
+ 
 prefix=$(cd $1 && pwd)
-URL=https://github.com/ros/catkin.git
-
-git clone $URL $prefix/catkin
-# Something broke catkin
-cd $prefix/catkin
-git checkout a889894e9c7acccca931289de888e3dba1537504
+URL=http://pocoproject.org/releases/poco-1.4.6/poco-1.4.6p2.tar.gz
+ 
+download_gz $URL $prefix

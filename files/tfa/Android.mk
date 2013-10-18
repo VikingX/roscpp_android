@@ -1,8 +1,9 @@
 LOCAL_PATH := $(call my-dir)
 
-stlibs += boost_system boost_thread boost_signals 
-stlibs += cpp_common console_bridge rostime
-stlibs += tf2
+# These must go in some sort of order like include flags, otherwise they are dropped
+stlibs := roscpp xmlrpcpp rosconsole cpp_common console_bridge boost_date_time boost_filesystem boost_program_options
+stlibs += boost_regex boost_system boost_signals boost_thread 
+stlibs += roscpp_serialization rostime
 
 shlibs := $(stlibs)
 

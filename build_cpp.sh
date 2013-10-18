@@ -28,4 +28,4 @@ catkin_make --cmake-args -DCMAKE_TOOLCHAIN_FILE=$RBA_TOOLCHAIN \
    # -DBOOST_INCLUDEDIR:PATH=$CMAKE_PREFIX_PATH/include -DBOOST_LIBRARYDIR:PATH=$CMAKE_PREFIX_PATH/lib
    # -DBOOST_ROOT:PATHNAME=$CMAKE_PREFIX_PATH/include
 
-#cd build && make install
+cd build && make install
