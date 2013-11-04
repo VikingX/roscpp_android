@@ -44,4 +44,4 @@
 - git:
     local-name: ros_comm
     uri: https://github.com/chadrockey/ros_comm
-    version: cpp_min
+    version: cpp
