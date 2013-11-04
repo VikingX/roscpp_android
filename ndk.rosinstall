@@ -45,3 +45,58 @@
     local-name: ros_comm
     uri: https://github.com/chadrockey/ros_comm
     version: cpp
+- git:
+    local-name: bond
+    uri: https://github.com/ros-gbp/bond_core-release.git
+    version: release/hydro/bond/1.7.13-0
+- git:
+    local-name: bondcpp
+    uri: https://github.com/ros-gbp/bond_core-release.git
+    version: release/hydro/bondcpp/1.7.13-0
+- git:
+    local-name: class_loader
+    uri: https://github.com/ros-gbp/class_loader-release.git
+    version: release/hydro/class_loader/0.2.3-0
+- git:
+    local-name: depthimage_to_laserscan
+    uri: https://github.com/ros-perception/depthimage_to_laserscan
+- git:
+    local-name: dynamic_reconfigure
+    uri: https://github.com/ros-gbp/dynamic_reconfigure-release.git
+    version: release/hydro/dynamic_reconfigure/1.5.34-0
+- git:
+    local-name: geometry_msgs
+    uri: https://github.com/ros-gbp/common_msgs-release.git
+    version: release/hydro/geometry_msgs/1.10.2-0
+- git:
+    local-name: image_geometry
+    uri: https://github.com/ros-gbp/vision_opencv-release.git
+    version: release/hydro/image_geometry/1.10.11-0
+- git:
+    local-name: image_transport
+    uri: https://github.com/ros-gbp/image_common-release.git
+    version: release/hydro/image_transport/1.11.0-0
+- git:
+    local-name: nodelet
+    uri: https://github.com/ros-gbp/nodelet_core-release.git
+    version: release/hydro/nodelet/1.8.1-0
+- git:
+    local-name: pluginlib
+    uri: https://github.com/ros-gbp/pluginlib-release.git
+    version: release/hydro/pluginlib/1.9.23-0
+- git:
+    local-name: roslib
+    uri: https://github.com/ros-gbp/ros-release.git
+    version: release/hydro/roslib/1.10.8-0
+- git:
+    local-name: rospack
+    uri: https://github.com/chadrockey/rospack
+    version: ndk
+- git:
+    local-name: sensor_msgs
+    uri: https://github.com/ros-gbp/common_msgs-release.git
+    version: release/hydro/sensor_msgs/1.10.2-0
+- git:
+    local-name: smclib
+    uri: https://github.com/ros-gbp/bond_core-release.git
+    version: release/hydro/smclib/1.7.13-0

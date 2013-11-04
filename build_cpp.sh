@@ -13,13 +13,12 @@ if echo $system | grep _64 >/dev/null; then
 fi
 
 python=$(which python)
+python_lib=/usr/lib/libpython2.7.so.1.0
+python_inc=/usr/include/python2.7
 
 cd $CMAKE_PREFIX_PATH/catkin_ws
 
-catkin_make --cmake-args -DCMAKE_TOOLCHAIN_FILE=$RBA_TOOLCHAIN \
-    -DANDROID_TOOLCHAIN_NAME=$toolchain -DANDROID_NATIVE_API_LEVEL=$platform $host64 \
-    -DPYTHON_EXECUTABLE=$python -DBUILD_SHARED_LIBS=0 -DCMAKE_INSTALL_PREFIX=$CMAKE_PREFIX_PATH \
-    -DBoost_NO_BOOST_CMAKE=ON
+catkin_make --cmake-args -DCMAKE_TOOLCHAIN_FILE=$RBA_TOOLCHAIN -DANDROID_TOOLCHAIN_NAME=$toolchain -DANDROID_NATIVE_API_LEVEL=$platform $host64 -DPYTHON_EXECUTABLE=$python -DPYTHON_LIBRARY=$python_lib -DPYTHON_INCLUDE_DIR=$python_inc -DBUILD_SHARED_LIBS=0 -DCMAKE_INSTALL_PREFIX=$CMAKE_PREFIX_PATH -DBoost_NO_BOOST_CMAKE=ON
     #-DBoost_DEBUG=ON \ 
     #-DBoost_NO_BOOST_CMAKE=TRUE -DBoost_NO_SYSTEM_PATHS=TRUE -DBOOST_ROOT:PATHNAME=$CMAKE_PREFIX_PATH/include/boost \
     #-DBOOST_INCLUDEDIR:PATH=$CMAKE_PREFIX_PATH/include/boost -DBOOST_LIBRARYDIR:PATH=$CMAKE_PREFIX_PATH/lib \
