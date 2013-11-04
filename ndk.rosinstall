@@ -1,0 +1,47 @@
+- git:
+    local-name: catkin
+    uri: https://github.com/ros-gbp/catkin-release.git
+    version: release/hydro/catkin/0.5.77-0
+- git:
+    local-name: gencpp
+    uri: https://github.com/ros-gbp/gencpp-release.git
+    version: release/hydro/gencpp/0.4.14-0
+- git:
+    local-name: genlisp
+    uri: https://github.com/ros-gbp/genlisp-release.git
+    version: release/hydro/genlisp/0.4.12-0
+- git:
+    local-name: genmsg
+    uri: https://github.com/ros-gbp/genmsg-release.git
+    version: release/hydro/genmsg/0.4.23-0
+- git:
+    local-name: genpy
+    uri: https://github.com/ros-gbp/genpy-release.git
+    version: release/hydro/genpy/0.4.14-0
+- git:
+    local-name: message_generation
+    uri: https://github.com/ros-gbp/message_generation-release.git
+    version: release/hydro/message_generation/0.2.10-0
+- git:
+    local-name: message_runtime
+    uri: https://github.com/ros-gbp/message_runtime-release.git
+    version: release/hydro/message_runtime/0.4.12-0
+- git:
+    local-name: roslang
+    uri: https://github.com/ros-gbp/ros-release.git
+    version: release/hydro/roslang/1.10.8-0
+- git:
+    local-name: rosunit
+    uri: https://github.com/ros-gbp/ros-release.git
+    version: release/hydro/rosunit/1.10.8-0
+- git:
+    local-name: std_msgs
+    uri: https://github.com/ros-gbp/std_msgs-release.git
+    version: release/hydro/std_msgs/0.5.8-0
+- git:
+    local-name: roscpp_core
+    uri: https://github.com/ros/roscpp_core
+- git:
+    local-name: ros_comm
+    uri: https://github.com/chadrockey/ros_comm
+    version: cpp_min
