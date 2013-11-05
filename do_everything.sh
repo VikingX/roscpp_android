@@ -38,7 +38,7 @@ fi
  
 [ -d $prefix/libs/poco-1.4.6p2 ] || run_cmd get_poco $prefix/libs
 [ -d $prefix/libs/bzip2-1.0.6 ] || run_cmd get_bzip2 $prefix/libs
-[ -d $prefix/libs/tinyxml ] || run_cmd get_tinyxml $prefix/libs
+# [ -d $prefix/libs/tinyxml ] || run_cmd get_tinyxml $prefix/libs
 [ -d $prefix/libs/e2fsprogs-1.42.8 ] || run_cmd get_uuid $prefix/libs
 [ -d $prefix/libs/OpenCV-2.4.6-android-sdk ] || run_cmd get_opencv $prefix/libs
 [ -d $prefix/libs/catkin ] || run_cmd get_catkin $prefix/libs
@@ -55,7 +55,7 @@ run_cmd build_catkin $prefix/libs/catkin
 run_cmd get_ros_stuff $prefix/libs
  
 run_cmd build_bzip2 $prefix/libs/bzip2
-run_cmd build_tinyxml $prefix/libs/tinyxml
+# run_cmd build_tinyxml $prefix/libs/tinyxml
 run_cmd build_boost $prefix/libs/boost_1_47_0
 run_cmd build_poco $prefix/libs/poco-1.4.6p2
 run_cmd build_uuid $prefix/libs/e2fsprogs-1.42.8

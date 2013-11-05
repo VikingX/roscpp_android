@@ -16,8 +16,11 @@ cd $1
  
 # Create a stand alone version of the android toolchain
 echo Building POCO...
-mkdir toolchain/
-$ANDROID_NDK/build/tools/make-standalone-toolchain.sh --platform=android-8 --install-dir=./toolchain --ndk-dir=$ANDROID_NDK --system=linux-x86_64
+
+if [ ! -d toolchain/ ]; then
+  mkdir toolchain/
+  $ANDROID_NDK/build/tools/make-standalone-toolchain.sh --platform=android-8 --install-dir=./toolchain --ndk-dir=$ANDROID_NDK --system=linux-x86_64
+fi
 ./configure --config=Android --no-samples --no-tests
 export PATH=$PATH:$1/toolchain/bin
 make -s -j8

@@ -55,8 +55,8 @@
     version: release/hydro/bondcpp/1.7.13-0
 - git:
     local-name: class_loader
-    uri: https://github.com/ros-gbp/class_loader-release.git
-    version: release/hydro/class_loader/0.2.3-0
+    uri: https://github.com/ros/class_loader.git
+    version: hydro-devel
 - git:
     local-name: depthimage_to_laserscan
     uri: https://github.com/ros-perception/depthimage_to_laserscan
@@ -82,15 +82,15 @@
     version: release/hydro/nodelet/1.8.1-0
 - git:
     local-name: pluginlib
-    uri: https://github.com/ros-gbp/pluginlib-release.git
-    version: release/hydro/pluginlib/1.9.23-0
+    uri: https://github.com/tulku/pluginlib.git
+    version: android
 - git:
     local-name: roslib
-    uri: https://github.com/ros-gbp/ros-release.git
-    version: release/hydro/roslib/1.10.8-0
+    uri: https://github.com/tulku/roslib.git
+    version: master
 - git:
     local-name: rospack
-    uri: https://github.com/chadrockey/rospack
+    uri: https://github.com/tulku/rospack
     version: ndk
 - git:
     local-name: sensor_msgs
@@ -100,3 +100,8 @@
     local-name: smclib
     uri: https://github.com/ros-gbp/bond_core-release.git
     version: release/hydro/smclib/1.7.13-0
+- git:
+    local-name: libtinyxml
+    uri: https://github.com/tulku/libtinyxml.git
+    version: android
+

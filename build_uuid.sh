@@ -16,8 +16,11 @@ cd $1
  
 # Create a stand alone version of the android toolchain
 echo Building UUID...
-mkdir toolchain/
-$ANDROID_NDK/build/tools/make-standalone-toolchain.sh --platform=android-8 --install-dir=./toolchain --ndk-dir=$ANDROID_NDK --system=linux-x86_64
+if [ ! -d toolchain/ ]; then
+  mkdir toolchain/
+  $ANDROID_NDK/build/tools/make-standalone-toolchain.sh --platform=android-8 --install-dir=./toolchain --ndk-dir=$ANDROID_NDK --system=linux-x86_64
+fi
+
 ./configure   --host=arm-linux-androideabi --prefix=/usr/local
 cd lib/uuid
 make

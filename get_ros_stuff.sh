@@ -21,6 +21,13 @@ mkdir -p $
 cd $CMAKE_PREFIX_PATH
 mkdir -p catkin_ws/src && cd catkin_ws
 
-wstool init -j8 src $my_loc/ndk.rosinstall
- 
+if [ -f src/.rosinstall ]; then
+  cd src/
+  wstool merge $my_loc/ndk.rosinstall --merge-replace
+  wstool update
+  cd ..
+else
+  wstool init -j8 src $my_loc/ndk.rosinstall
+fi
+
 exit 0
