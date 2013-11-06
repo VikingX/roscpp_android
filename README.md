@@ -7,10 +7,16 @@ location in the $PATH.
 INSTALL
 -------
 
+Source ROS (for python tools):
+
+    source /opt/ros/hydro/setup.bash
+
 The `do_everything.sh` script will call all the other scripts
 sequentially, you just have to give it a prefix path:
 
     ./do_everything.sh /path/to/workspace
+
+YOU WILL PROBABLY HAVE TO RUN THIS MULTIPLE TIMES DUE TO PTHREAD LINKING.
 
 You can also run each script individually, most of them have
 a minimalistic help string to give you an idea of their parameters.
