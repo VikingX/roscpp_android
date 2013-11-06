@@ -35,10 +35,6 @@
     uri: https://github.com/ros-gbp/ros-release.git
     version: release/hydro/rosunit/1.10.8-0
 - git:
-    local-name: std_msgs
-    uri: https://github.com/ros-gbp/std_msgs-release.git
-    version: release/hydro/std_msgs/0.5.8-0
-- git:
     local-name: roscpp_core
     uri: https://github.com/ros/roscpp_core
 - git:
@@ -61,13 +57,13 @@
     local-name: depthimage_to_laserscan
     uri: https://github.com/ros-perception/depthimage_to_laserscan
 - git:
+    local-name: std_msgs
+    uri: https://github.com/ros-gbp/std_msgs-release.git
+    version: release/hydro/std_msgs/0.5.8-0
+- git:
     local-name: dynamic_reconfigure
     uri: https://github.com/ros-gbp/dynamic_reconfigure-release.git
     version: release/hydro/dynamic_reconfigure/1.5.34-0
-- git:
-    local-name: geometry_msgs
-    uri: https://github.com/ros-gbp/common_msgs-release.git
-    version: release/hydro/geometry_msgs/1.10.2-0
 - git:
     local-name: image_geometry
     uri: https://github.com/ros-gbp/vision_opencv-release.git
@@ -89,9 +85,9 @@
     uri: https://github.com/chadrockey/roslib
     version: master
 - git:
-    local-name: sensor_msgs
-    uri: https://github.com/ros-gbp/common_msgs-release.git
-    version: release/hydro/sensor_msgs/1.10.2-0
+    local-name: common_msgs
+    uri: https://github.com/ros/common_msgs
+    version: hydro-devel
 - git:
     local-name: smclib
     uri: https://github.com/ros-gbp/bond_core-release.git
@@ -100,3 +96,26 @@
     local-name: rospack
     uri: https://github.com/chadrockey/rospack
     version: android
+- git:
+    local-name: geometry_experiemental
+    uri: https://github.com/chadrockey/geometry_experimental
+    version: android_cpp
+- git:
+    local-name: navigation
+    uri: https://github.com/chadrockey/navigation
+    version: android
+- git:
+    local-name: actionlib
+    uri: https://github.com/tulku/actionlib
+    version: android
+- git:
+    local-name: tf
+    uri: https://github.com/tulku/tf
+    version: android
+- git:
+    local-name: angles
+    uri: https://github.com/ros/angles
+- git:
+    local-name: map_msgs
+    uri: https://github.com/ethz-asl/map_msgs
+    version: master

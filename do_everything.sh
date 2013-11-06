@@ -41,6 +41,7 @@ fi
 [ -d $prefix/libs/tinyxml ] || run_cmd get_tinyxml $prefix/libs
 [ -d $prefix/libs/uuid ] || run_cmd get_uuid $prefix/libs
 [ -d $prefix/libs/OpenCV-2.4.6-android-sdk ] || run_cmd get_opencv $prefix/libs
+[ -d $prefix/libs/eigen ] || run_cmd get_eigen $prefix/libs
 [ -d $prefix/libs/catkin ] || run_cmd get_catkin $prefix/libs
 [ -d $prefix/libs/console_bridge ] || run_cmd get_console_bridge $prefix/libs
  
@@ -61,6 +62,7 @@ run_cmd build_poco $prefix/libs/poco-1.4.6p2
 run_cmd build_uuid $prefix/libs/uuid
 run_cmd build_console_bridge $prefix/libs/console_bridge
 run_cmd copy_opencv $prefix/libs/OpenCV-2.4.6-android-sdk
+run_cmd build_eigen $prefix/libs/eigen
 run_cmd build_cpp
 
  
