@@ -10,11 +10,10 @@ if [ $# != 1 ] || [ $1 == '-h' ] || [ $1 == '--help' ]; then
     exit 1
 fi
 
+
 cmd_exists git || die 'git was not found'
 
 prefix=$(cd $1 && pwd)
-URL=https://github.com/chadrockey/tinyxml-android
+URL=https://github.com/chadrockey/tinyxml_cmake
 
-git clone $URL $prefix/tinyxml
-cd $prefix/tinyxml
-
+[ -d $prefix/tinyxml ] || git clone $URL $prefix/tinyxml

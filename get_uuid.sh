@@ -11,6 +11,6 @@ if [ $# != 1 ] || [ $1 == '-h' ] || [ $1 == '--help' ]; then
 fi
  
 prefix=$(cd $1 && pwd)
-URL=http://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v1.42.8/e2fsprogs-1.42.8.tar.gz
+URL=https://github.com/chadrockey/uuid_cmake
  
-download_gz $URL $prefix
+[ -d $prefix/uuid ] || git clone $URL $prefix/uuid

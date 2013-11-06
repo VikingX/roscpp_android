@@ -51,8 +51,8 @@
     version: release/hydro/bond/1.7.13-0
 - git:
     local-name: bondcpp
-    uri: https://github.com/ros-gbp/bond_core-release.git
-    version: release/hydro/bondcpp/1.7.13-0
+    uri: https://github.com/chadrockey/bondcpp
+    version: android
 - git:
     local-name: class_loader
     uri: https://github.com/ros/class_loader.git
@@ -74,24 +74,20 @@
     version: release/hydro/image_geometry/1.10.11-0
 - git:
     local-name: image_transport
-    uri: https://github.com/ros-gbp/image_common-release.git
-    version: release/hydro/image_transport/1.11.0-0
+    uri: https://github.com/chadrockey/image_transport
+    version: android
 - git:
     local-name: nodelet
-    uri: https://github.com/ros-gbp/nodelet_core-release.git
-    version: release/hydro/nodelet/1.8.1-0
+    uri: https://github.com/chadrockey/nodelet_core
+    version: android
 - git:
     local-name: pluginlib
-    uri: https://github.com/tulku/pluginlib.git
+    uri: https://github.com/chadrockey/pluginlib
     version: android
 - git:
     local-name: roslib
-    uri: https://github.com/tulku/roslib.git
+    uri: https://github.com/chadrockey/roslib
     version: master
-- git:
-    local-name: rospack
-    uri: https://github.com/tulku/rospack
-    version: ndk
 - git:
     local-name: sensor_msgs
     uri: https://github.com/ros-gbp/common_msgs-release.git
@@ -101,7 +97,6 @@
     uri: https://github.com/ros-gbp/bond_core-release.git
     version: release/hydro/smclib/1.7.13-0
 - git:
-    local-name: libtinyxml
-    uri: https://github.com/tulku/libtinyxml.git
+    local-name: rospack
+    uri: https://github.com/chadrockey/rospack
     version: android
-
