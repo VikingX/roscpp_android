@@ -43,6 +43,9 @@ fi
 [ -d $prefix/libs/bzip2-1.0.6 ] || run_cmd get_bzip2 $prefix/libs
 [ -d $prefix/libs/catkin ] || run_cmd get_catkin $prefix/libs
 [ -d $prefix/libs/console_bridge ] || run_cmd get_console_bridge $prefix/libs
+[ -d $prefix/libs/pcl ] || run_cmd get_pcl $prefix/libs
+[ -d $prefix/libs/eigen ] || run_cmd get_eigen $prefix/libs
+[ -d $prefix/libs/flann-1.7.1-src ] || run_cmd get_flann $prefix/libs
  
 [ -d $prefix/target ] || mkdir -p $prefix/target
 export CMAKE_PREFIX_PATH=$prefix/target
@@ -58,6 +61,9 @@ run_cmd build_bzip2 $prefix/libs/bzip2
 run_cmd build_boost $prefix/libs/boost_1_47_0
 run_cmd build_poco $prefix/libs/poco-1.4.6p2
 run_cmd build_console_bridge $prefix/libs/console_bridge
+run_cmd build_eigen $prefix/libs/eigen
+run_cmd build_flann $prefix/libs/flann-1.7.1-src/src/cpp
+run_cmd build_pcl $prefix/libs/pcl
 run_cmd build_cpp
  
 run_cmd setup_ndk_project $prefix/tf2_ndk
