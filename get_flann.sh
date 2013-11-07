@@ -11,6 +11,6 @@ if [ $# != 1 ] || [ $1 == '-h' ] || [ $1 == '--help' ]; then
 fi
  
 prefix=$(cd $1 && pwd)
-URL=http://www.cs.ubc.ca/research/flann/uploads/FLANN/flann-1.7.1-src.zip
+URL=https://github.com/chadrockey/flann_cmake.git
  
-download_zip $URL $prefix
+[ -d $prefix/flann ] || git clone $URL $prefix/flann
