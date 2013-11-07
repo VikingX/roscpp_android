@@ -131,7 +131,10 @@
     local-name: laser_geometry
     uri: https://github.com/ros-perception/laser_geometry
     version: hydro-devel
-
+- git:
+    local-name: pcl_msgs
+    uri: https://github.com/ros-perception/pcl_msgs
+    version: hydro-devel
     
 
     
