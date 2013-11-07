@@ -11,9 +11,6 @@ if [ $# != 1 ] || [ $1 == '-h' ] || [ $1 == '--help' ]; then
 fi
  
 prefix=$(cd $1 && pwd)
-#URL=https://github.com/patmarion/pcl-superbuild
+URL=https://github.com/chadrockey/pcl.git
  
-#[ -d $prefix/pcl ] || git clone $URL $prefix/pcl
-
-URL=https://github.com/PointCloudLibrary/pcl/archive/pcl-1.7.0.tar.gz
-download_gz $URL $prefix
+[ -d $prefix/pcl ] || git clone $URL $prefix/pcl

@@ -14,6 +14,6 @@ prefix=$(cd $1 && pwd)
 
 cd ${prefix}
 if [ ! -d eigen ]; then
-  git clone https://github.com/tulku/eigen.git
+  git clone -b android-3.0 https://github.com/tulku/eigen.git
 fi
 
