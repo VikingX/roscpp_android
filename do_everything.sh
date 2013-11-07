@@ -71,8 +71,8 @@ run_cmd build_pcl $prefix/libs/pcl
 run_cmd build_cpp
 
  
-run_cmd setup_ndk_project $prefix/cpp_ndk
-( cd $prefix && run_cmd sample_app sample_app $prefix/cpp_ndk )
+run_cmd setup_ndk_project $prefix/roscpp_android_ndk
+#( cd $prefix && run_cmd sample_app sample_app $prefix/roscpp_android_ndk )
  
 echo
 echo 'done.'
