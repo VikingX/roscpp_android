@@ -11,7 +11,7 @@ if [ $# != 1 ] || [ $1 == '-h' ] || [ $1 == '--help' ]; then
     exit 1
 fi
  
-boost_libs="date_time,signals,system,thread,filesystem,program_options,regex"
+boost_libs="date_time,signals,system,thread,filesystem,program_options,regex,iostreams"
  
 prefix=$(cd $1 && pwd)
  

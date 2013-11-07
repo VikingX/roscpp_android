@@ -11,9 +11,6 @@ if [ $# != 1 ] || [ $1 == '-h' ] || [ $1 == '--help' ]; then
 fi
  
 prefix=$(cd $1 && pwd)
-
-cd ${prefix}
-if [ ! -d eigen ]; then
-  git clone -b android-3.0 https://github.com/tulku/eigen.git
-fi
-
+URL=http://www.cs.ubc.ca/research/flann/uploads/FLANN/flann-1.7.1-src.zip
+ 
+download_zip $URL $prefix
