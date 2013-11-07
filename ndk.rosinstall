@@ -119,3 +119,21 @@
     local-name: map_msgs
     uri: https://github.com/ethz-asl/map_msgs
     version: master
+- git:
+    local-name: pcl_conversions
+    uri: https://github.com/ros-perception/pcl_conversions
+    version: hydro-devel
+- git:
+    local-name: perception_pcl
+    uri: https://github.com/chadrockey/perception_pcl
+    version: android
+- git:
+    local-name: laser_geometry
+    uri: https://github.com/ros-perception/laser_geometry
+    version: hydro-devel
+
+    
+
+    
+
+    
