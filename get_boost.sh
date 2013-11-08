@@ -11,6 +11,6 @@ if [ $# != 1 ] || [ $1 == '-h' ] || [ $1 == '--help' ]; then
 fi
 
 prefix=$(cd $1 && pwd)
-URL=http://sourceforge.net/projects/boost/files/boost/1.47.0/boost_1_47_0.tar.bz2/download
+URL=http://jaist.dl.sourceforge.net/project/boost/boost/1.47.0/boost_1_47_0.tar.bz2
 
 download_bz2 $URL $prefix

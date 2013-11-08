@@ -11,6 +11,6 @@ if [ $# != 1 ] || [ $1 == '-h' ] || [ $1 == '--help' ]; then
 fi
  
 prefix=$(cd $1 && pwd)
-URL=http://downloads.sourceforge.net/project/opencvlibrary/opencv-android/2.4.6/OpenCV-2.4.6-android-sdk-r2.zip
+URL=http://jaist.dl.sourceforge.net/project/opencvlibrary/opencv-android/2.4.6/OpenCV-2.4.6-android-sdk-r2.zip
  
 download_zip $URL $prefix
