@@ -1,0 +1,10 @@
+--- a/boost/config/user.hpp	2013-11-13 15:39:24.544271701 -0800
++++ b/boost/config/user.hpp	2013-11-13 15:39:15.716271787 -0800
+@@ -120,5 +120,6 @@
+ // that feature off.
+ // #define BOOST_WHATEVER_NO_LIB
+  
+-
++#define DBOOST_ASIO_DISABLE_STD_ATOMIC
++#define DBOOST_AC_USE_PTHREADS
+ 
