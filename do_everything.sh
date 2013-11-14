@@ -29,12 +29,19 @@ fi
 [ -d $standalone_toolchain_path ] || run_cmd setup_standalone_toolchain
  
 mkdir -p $prefix/libs
+
+# Start with catkin since we use it to build almost everything else
+[ -d $prefix/target ] || mkdir -p $prefix/target
+export CMAKE_PREFIX_PATH=$prefix/target
  
-if [ ! -d $prefix/libs/boost_1_49_0 ]; then
+[ -e $prefix/android.toolchain.cmake ] || ( cd $prefix && download 'https://raw.github.com/taka-no-me/android-cmake/master/android.toolchain.cmake' && cat $my_loc/files/android.toolchain.cmake.addendum >> $prefix/android.toolchain.cmake)
+export RBA_TOOLCHAIN=$prefix/android.toolchain.cmake
+ 
+# Now get boost with a specialized build
+if [ ! -d $prefix/libs/boost ]; then
     run_cmd get_boost $prefix/libs
-    run_cmd patch_boost $prefix/libs/boost_1_49_0
-    run_cmd prepare_boost $prefix/libs/boost_1_49_0
 fi
+
  
 [ -d $prefix/libs/poco-1.4.6p2 ] || run_cmd get_poco $prefix/libs
 [ -d $prefix/libs/bzip2-1.0.6 ] || run_cmd get_bzip2 $prefix/libs
@@ -48,22 +55,14 @@ fi
 [ -d $prefix/libs/eigen ] || run_cmd get_eigen $prefix/libs
 [ -d $prefix/libs/flann ] || run_cmd get_flann $prefix/libs
  
-[ -d $prefix/target ] || mkdir -p $prefix/target
-export CMAKE_PREFIX_PATH=$prefix/target
- 
-[ -e $prefix/android.toolchain.cmake ] || ( cd $prefix && download 'https://raw.github.com/taka-no-me/android-cmake/master/android.toolchain.cmake' && cat $my_loc/files/android.toolchain.cmake.addendum >> $prefix/android.toolchain.cmake)
-export RBA_TOOLCHAIN=$prefix/android.toolchain.cmake
- 
 run_cmd build_catkin $prefix/libs/catkin
 . $prefix/target/setup.bash
 run_cmd get_ros_stuff $prefix/libs
  
 run_cmd build_bzip2 $prefix/libs/bzip2
 run_cmd build_tinyxml $prefix/libs/tinyxml
-run_cmd build_boost $prefix/libs/boost_1_49_0
 
-die blah
-
+run_cmd copy_boost $prefix/libs/boost
 run_cmd build_poco $prefix/libs/poco-1.4.6p2
 run_cmd build_uuid $prefix/libs/uuid
 run_cmd build_console_bridge $prefix/libs/console_bridge
