@@ -26,14 +26,14 @@ if [ -z $ANDROID_NDK ] ; then
     die "ANDROID_NDK ENVIRONMENT NOT FOUND!"
 fi
  
-#[ -d $standalone_toolchain_path ] || run_cmd setup_standalone_toolchain
+[ -d $standalone_toolchain_path ] || run_cmd setup_standalone_toolchain
  
 mkdir -p $prefix/libs
  
-if [ ! -d $prefix/libs/boost_1_47_0 ]; then
+if [ ! -d $prefix/libs/boost_1_49_0 ]; then
     run_cmd get_boost $prefix/libs
-    run_cmd patch_boost $prefix/libs/boost_1_47_0
-    run_cmd prepare_boost $prefix/libs/boost_1_47_0
+    run_cmd patch_boost $prefix/libs/boost_1_49_0
+    run_cmd prepare_boost $prefix/libs/boost_1_49_0
 fi
  
 [ -d $prefix/libs/poco-1.4.6p2 ] || run_cmd get_poco $prefix/libs
@@ -60,7 +60,10 @@ run_cmd get_ros_stuff $prefix/libs
  
 run_cmd build_bzip2 $prefix/libs/bzip2
 run_cmd build_tinyxml $prefix/libs/tinyxml
-run_cmd build_boost $prefix/libs/boost_1_47_0
+run_cmd build_boost $prefix/libs/boost_1_49_0
+
+die blah
+
 run_cmd build_poco $prefix/libs/poco-1.4.6p2
 run_cmd build_uuid $prefix/libs/uuid
 run_cmd build_console_bridge $prefix/libs/console_bridge
@@ -72,7 +75,7 @@ run_cmd build_cpp
 
  
 run_cmd setup_ndk_project $prefix/roscpp_android_ndk
-#( cd $prefix && run_cmd sample_app sample_app $prefix/roscpp_android_ndk )
+( cd $prefix && run_cmd sample_app sample_app $prefix/roscpp_android_ndk )
  
 echo
 echo 'done.'
@@ -85,4 +88,3 @@ echo '  sample_app/  is an example of such an app, a native activity that uses t
 echo
 echo 'you might now cd into sample_app/, run "ant debug install", and if an'
 echo 'android emulator is running, the app will be flashed onto it.'
-echo

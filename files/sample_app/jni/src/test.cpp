@@ -8,11 +8,15 @@
 #include <set>
 #include <fstream>
 #include <android/log.h>
+#include <amcl/amcl_node.h>
 
 #include <ros/ros.h>
 #include <std_msgs/String.h>
 
 #include <android_native_app_glue.h>
+
+int loop_count_ = 0;
+ros::Publisher chatter_pub;
 
 void log(const char *msg, ...) {
     va_list args;
@@ -36,7 +40,13 @@ static double now(void) {
 #define LASTERR strerror(errno)
 
 void chatterCallback(const std_msgs::StringConstPtr& msg){
-    log(msg->data.c_str());
+            loop_count_++;
+            std_msgs::String msgo;
+                std::stringstream ss;
+               ss << "hello world from android ndk " << loop_count_;
+               msgo.data = ss.str();
+            chatter_pub.publish(msgo);
+    //log(msg->data.c_str());
 }
 
 void android_main(android_app *papp) {
@@ -44,7 +54,7 @@ void android_main(android_app *papp) {
     app_dummy();
 
     int argc = 3;
-    char *argv[] = {"nothing_important" , "__master:=http://10.52.90.103:11311", "__ip:=10.52.90.246"};
+    char *argv[] = {"nothing_important" , "__master:=http://192.168.1.238:11311", "__ip:=192.168.1.221"};
     //strcpy(argv[0], 'nothing_important');
     //argv[1] = '__master:=http://10.52.90.103:11311';
     //argv[2] = '__ip:=10.52.90.246';
@@ -64,14 +74,16 @@ void android_main(android_app *papp) {
     log(master_uri.c_str());
     ros::NodeHandle n;
     log("GOING TO PUBLISHER");
-    ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
+    chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
     ros::Subscriber sub = n.subscribe("a_chatter", 1000, chatterCallback);
-    ros::Rate loop_rate(5);
+    log("ADDING AMCL");
+    AmclNode node;
+    ros::WallRate loop_rate(100);
+
+    
 
     while(ros::ok() && !papp->destroyRequested){
-            std_msgs::String msg;
-            msg.data = "hello world from android ndk";
-            chatter_pub.publish(msg);
+
             ros::spinOnce();
             loop_rate.sleep();
     }
