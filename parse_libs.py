@@ -16,8 +16,8 @@ for library in libraries_split:
 		if(library.startswith(path)):
 			break
 	else:
-		right_part = library.rsplit("lib",1)[1] # Remove everything in front of /filepath/blah/libmylib.a
-		out_part = right_part.rsplit(".",1)[0] # Remove file extensions from mylib.a\
+		right_part = library.rsplit("/lib",1)[1] # Remove everything in front of /filepath/blah/libmylib.a
+		out_part = right_part.rsplit(".",1)[0] # Remove file extensions from mylib.a
 		libraries_out += " " + out_part
 
 print libraries_out

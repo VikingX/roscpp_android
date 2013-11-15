@@ -17,7 +17,8 @@ cd $1
 [ "$CMAKE_PREFIX_PATH" = "" ] && die 'could not find target basedir. Have you run build_catkin.sh and sourced setup.bash?'
 mkdir -p $CMAKE_PREFIX_PATH/lib
 cd $CMAKE_PREFIX_PATH/lib
-ln -sf $prefix/sdk/native/libs/armeabi/lib*.a ./
+ln -sf $prefix/sdk/native/3rdparty/libs/armeabi-v7a/lib*.a ./
+ln -sf $prefix/sdk/native/libs/armeabi-v7a/lib*.a ./
 mkdir -p ../include && cd ../include
 ln -sf $prefix/sdk/native/jni/include/* ./
 mkdir -p ../share/OpenCV/cmake && cd ../share/OpenCV/cmake

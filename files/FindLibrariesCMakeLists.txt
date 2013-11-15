@@ -12,6 +12,8 @@ endmacro()
 # find catkin
 find_package(catkin REQUIRED)
 
+set(output_LIBRARIES "")
+
 # find all components
 foreach(component ${ALL_PACKAGES})
   string(TOLOWER "${component}" component_lower)
@@ -40,13 +42,17 @@ foreach(component ${ALL_PACKAGES})
     endif()
 
     # append component-specific variables to catkin_* variables
+    set(tmp_LIBRARIES ${output_LIBRARIES})
+    set(output_LIBRARIES "")
+    list_append_unique(output_LIBRARIES ${${component}_LIBRARIES})
     list_append_unique(catkin_INCLUDE_DIRS ${${component}_INCLUDE_DIRS})
     list_append_unique(catkin_LIBRARIES ${${component}_LIBRARIES})
+    list_append_unique(output_LIBRARIES ${tmp_LIBRARIES})
     list_append_unique(catkin_LIBRARY_DIRS ${${component}_LIBRARY_DIRS})
     list(APPEND catkin_EXPORTED_TARGETS ${${component}_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-message( STATUS "${catkin_LIBRARIES}" )
+message( STATUS "${output_LIBRARIES}" )
 
-file(WRITE libraries.txt "${catkin_LIBRARIES}")
+file(WRITE libraries.txt "${output_LIBRARIES}")

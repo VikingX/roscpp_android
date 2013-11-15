@@ -23,7 +23,7 @@ mkdir -p $CMAKE_PREFIX_PATH/find_libs
 cp $my_loc/files/FindLibrariesCMakeLists.txt $CMAKE_PREFIX_PATH/find_libs/CMakeLists.txt
 cd $CMAKE_PREFIX_PATH/find_libs
 cmake ../find_libs -DCMAKE_PREFIX_PATH="$CMAKE_PREFIX_PATH;$ANDROID_NDK/platforms/android-14/arch-arm/usr/lib" \
-             -DALL_PACKAGES=$package_list
+             -DALL_PACKAGES="$package_list"
 
 # Read the output file to get the paths of all of the libraries
 full_library_list=$(cat $CMAKE_PREFIX_PATH/find_libs/libraries.txt)
