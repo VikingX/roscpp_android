@@ -42,7 +42,6 @@ if [ ! -d $prefix/libs/boost ]; then
     run_cmd get_boost $prefix/libs
 fi
 
- 
 [ -d $prefix/libs/poco-1.4.6p2 ] || run_cmd get_poco $prefix/libs
 [ -d $prefix/libs/bzip2-1.0.6 ] || run_cmd get_bzip2 $prefix/libs
 [ -d $prefix/libs/tinyxml ] || run_cmd get_tinyxml $prefix/libs
@@ -72,8 +71,8 @@ run_cmd build_flann $prefix/libs/flann
 run_cmd build_pcl $prefix/libs/pcl
 run_cmd build_cpp
 
- 
 run_cmd setup_ndk_project $prefix/roscpp_android_ndk
+run_cmd create_android_mk $prefix/target/catkin_ws/src $prefix/roscpp_android_ndk
 ( cd $prefix && run_cmd sample_app sample_app $prefix/roscpp_android_ndk )
  
 echo

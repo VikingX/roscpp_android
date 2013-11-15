@@ -1,0 +1,52 @@
+cmake_minimum_required(VERSION 2.8.3)
+
+macro(list_append_unique listname)
+  foreach(_item ${ARGN})
+    list(FIND ${listname} ${_item} _index)
+    if(_index EQUAL -1)
+      list(APPEND ${listname} ${_item})
+    endif()
+  endforeach()
+endmacro()
+
+# find catkin
+find_package(catkin REQUIRED)
+
+# find all components
+foreach(component ${ALL_PACKAGES})
+  string(TOLOWER "${component}" component_lower)
+  # skip catkin since it does not make sense as a component
+  if(NOT ${component_lower} STREQUAL "catkin")
+
+    # get search paths from CMAKE_PREFIX_PATH (which includes devel space)
+    set(paths "")
+    foreach(path ${CMAKE_PREFIX_PATH})
+      message( STATUS "Looking in ${path}")
+      if(IS_DIRECTORY ${path}/share/${component}/cmake)
+        list(APPEND paths ${path}/share/${component}/cmake)
+      endif()
+    endforeach()
+
+    # find package component
+    if(catkin_FIND_REQUIRED)
+      find_package(${component} REQUIRED NO_MODULE PATHS ${paths}
+        NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
+    elseif(catkin_FIND_QUIETLY)
+      find_package(${component} QUIET NO_MODULE PATHS ${paths}
+        NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
+    else()
+      find_package(${component} NO_MODULE PATHS ${paths}
+        NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
+    endif()
+
+    # append component-specific variables to catkin_* variables
+    list_append_unique(catkin_INCLUDE_DIRS ${${component}_INCLUDE_DIRS})
+    list_append_unique(catkin_LIBRARIES ${${component}_LIBRARIES})
+    list_append_unique(catkin_LIBRARY_DIRS ${${component}_LIBRARY_DIRS})
+    list(APPEND catkin_EXPORTED_TARGETS ${${component}_EXPORTED_TARGETS})
+  endif()
+endforeach()
+
+message( STATUS "${catkin_LIBRARIES}" )
+
+file(WRITE libraries.txt "${catkin_LIBRARIES}")

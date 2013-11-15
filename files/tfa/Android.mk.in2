@@ -1,8 +1,4 @@
-LOCAL_PATH := $(call my-dir)
 
-# These must go in some sort of order like include flags, otherwise they are dropped
-# Oh no, need to automate this with catkin somehow....
-stlibs := amcl_sensors amcl_map amcl_pf amcl_node roscpp boost_signals boost_filesystem boost_system cpp_common roscpp_serialization rostime boost_date_time boost_thread rosconsole boost_regex xmlrpcpp tf message_filters tf2_ros actionlib tf2 console_bridge dynamic_reconfigure_config_init_mutex
 
 #shlibs := 
 

@@ -1,0 +1,5 @@
+LOCAL_PATH := $(call my-dir)
+
+# These must go in some sort of order like include flags, otherwise they are dropped
+# Oh no, need to automate this with catkin somehow....
+stlibs := 
