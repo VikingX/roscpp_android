@@ -38,35 +38,35 @@ export CMAKE_PREFIX_PATH=$prefix/target
 export RBA_TOOLCHAIN=$prefix/android.toolchain.cmake
  
 # Now get boost with a specialized build
-#[ -d $prefix/libs/boost ] || run_cmd get_boost $prefix/libs
+[ -d $prefix/libs/boost ] || run_cmd get_boost $prefix/libs
 
-#[ -d $prefix/libs/poco-1.4.6p2 ] || run_cmd get_poco $prefix/libs
-#[ -d $prefix/libs/bzip2-1.0.6 ] || run_cmd get_bzip2 $prefix/libs
-#[ -d $prefix/libs/tinyxml ] || run_cmd get_tinyxml $prefix/libs
-#[ -d $prefix/libs/uuid ] || run_cmd get_uuid $prefix/libs
-#[ -d $prefix/libs/OpenCV-2.4.6-android-sdk ] || run_cmd get_opencv $prefix/libs
-#[ -d $prefix/libs/eigen ] || run_cmd get_eigen $prefix/libs
-#[ -d $prefix/libs/catkin ] || run_cmd get_catkin $prefix/libs
-#[ -d $prefix/libs/console_bridge ] || run_cmd get_console_bridge $prefix/libs
-#[ -d $prefix/libs/pcl ] || run_cmd get_pcl $prefix/libs
-#[ -d $prefix/libs/eigen ] || run_cmd get_eigen $prefix/libs
-#[ -d $prefix/libs/flann ] || run_cmd get_flann $prefix/libs
+[ -d $prefix/libs/poco-1.4.6p2 ] || run_cmd get_poco $prefix/libs
+[ -d $prefix/libs/bzip2-1.0.6 ] || run_cmd get_bzip2 $prefix/libs
+[ -d $prefix/libs/tinyxml ] || run_cmd get_tinyxml $prefix/libs
+[ -d $prefix/libs/uuid ] || run_cmd get_uuid $prefix/libs
+[ -d $prefix/libs/OpenCV-2.4.6-android-sdk ] || run_cmd get_opencv $prefix/libs
+[ -d $prefix/libs/eigen ] || run_cmd get_eigen $prefix/libs
+[ -d $prefix/libs/catkin ] || run_cmd get_catkin $prefix/libs
+[ -d $prefix/libs/console_bridge ] || run_cmd get_console_bridge $prefix/libs
+[ -d $prefix/libs/pcl ] || run_cmd get_pcl $prefix/libs
+[ -d $prefix/libs/eigen ] || run_cmd get_eigen $prefix/libs
+[ -d $prefix/libs/flann ] || run_cmd get_flann $prefix/libs
  
 run_cmd build_catkin $prefix/libs/catkin
 . $prefix/target/setup.bash
-#run_cmd get_ros_stuff $prefix/libs
+run_cmd get_ros_stuff $prefix/libs
  
-#run_cmd build_bzip2 $prefix/libs/bzip2
-#run_cmd build_tinyxml $prefix/libs/tinyxml
+run_cmd build_bzip2 $prefix/libs/bzip2
+run_cmd build_tinyxml $prefix/libs/tinyxml
 
-#run_cmd copy_boost $prefix/libs/boost
-#run_cmd build_poco $prefix/libs/poco-1.4.6p2
-#run_cmd build_uuid $prefix/libs/uuid
-#run_cmd build_console_bridge $prefix/libs/console_bridge
-#run_cmd copy_opencv $prefix/libs/OpenCV-2.4.6-android-sdk
-#run_cmd build_eigen $prefix/libs/eigen
-#run_cmd build_flann $prefix/libs/flann
-#run_cmd build_pcl $prefix/libs/pcl
+run_cmd copy_boost $prefix/libs/boost
+run_cmd build_poco $prefix/libs/poco-1.4.6p2
+run_cmd build_uuid $prefix/libs/uuid
+run_cmd build_console_bridge $prefix/libs/console_bridge
+run_cmd copy_opencv $prefix/libs/OpenCV-2.4.6-android-sdk
+run_cmd build_eigen $prefix/libs/eigen
+run_cmd build_flann $prefix/libs/flann
+run_cmd build_pcl $prefix/libs/pcl
 run_cmd build_cpp
 
 run_cmd setup_ndk_project $prefix/roscpp_android_ndk
