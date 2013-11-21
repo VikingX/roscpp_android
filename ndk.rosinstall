@@ -40,7 +40,7 @@
 - git:
     local-name: ros_comm
     uri: https://github.com/chadrockey/ros_comm
-    version: cpp
+    version: android
 - git:
     local-name: bond
     uri: https://github.com/ros-gbp/bond_core-release.git

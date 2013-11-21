@@ -40,6 +40,7 @@ static double now(void) {
 #define LASTERR strerror(errno)
 
 void chatterCallback(const std_msgs::StringConstPtr& msg){
+			ROS_INFO("%s", msg->data.c_str());
             loop_count_++;
             std_msgs::String msgo;
                 std::stringstream ss;
@@ -63,7 +64,7 @@ void android_main(android_app *papp) {
     for(int i = 0; i < argc; i++){
         log(argv[i]);
     }
-    ros::init(argc, &argv[0], "android_ndk_native_cpp", ros::init_options::NoRosout);
+    ros::init(argc, &argv[0], "android_ndk_native_cpp");
     log("GOING TO NODEHANDLE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     std::string master_uri = ros::master::getURI();
     if(ros::master::check()){
