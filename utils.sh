@@ -51,8 +51,8 @@ cmake_build() {
 
     cd $1
     mkdir -p build && cd build
-    cmake .. -jn -ln -DCMAKE_TOOLCHAIN_FILE=$RBA_TOOLCHAIN \
+    cmake .. -DCMAKE_TOOLCHAIN_FILE=$RBA_TOOLCHAIN \
         -DANDROID_TOOLCHAIN_NAME=$toolchain -DANDROID_NATIVE_API_LEVEL=$platform $host64 \
         -DPYTHON_EXECUTABLE=$python -DCMAKE_INSTALL_PREFIX=$target -DBUILD_SHARED_LIBS=0 -DPCL_SHARED_LIBS=FALSE
-    make install
+    make -j4 -l4 install
 }
