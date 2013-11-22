@@ -4,7 +4,7 @@ my_loc="$(cd "$(dirname $0)" && pwd)"
 source $my_loc/config.sh
 source $my_loc/utils.sh
  
-if [ $# != 1 ] || [ $1 == '-h' ] || [ $1 == '--help' ]; then
+if [ $# != 1 || $# != 2 ] || [ $1 == '-h' ] || [ $1 == '--help' ]; then
     echo "Usage: $0 prefix_path"
     echo "  example: $0 /home/user/my_workspace"
     exit 1
@@ -54,7 +54,9 @@ export RBA_TOOLCHAIN=$prefix/android.toolchain.cmake
  
 run_cmd build_catkin $prefix/libs/catkin
 . $prefix/target/setup.bash
-run_cmd get_ros_stuff $prefix/libs
+if [ $# == 1 ] || [ $2 != '--skip'] ; then
+	run_cmd get_ros_stuff $prefix/libs
+fi
  
 run_cmd build_bzip2 $prefix/libs/bzip2
 run_cmd build_tinyxml $prefix/libs/tinyxml
