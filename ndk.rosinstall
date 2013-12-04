@@ -103,7 +103,7 @@
 - git:
     local-name: navigation
     uri: https://github.com/chadrockey/navigation
-    version: android_cpp
+    version: no_plugins
 - git:
     local-name: actionlib
     uri: https://github.com/tulku/actionlib
