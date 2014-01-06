@@ -151,3 +151,7 @@
     local-name: laser_proc
     uri: https://github.com/ros-perception/laser_proc
     version: hydro-devel
+- git:
+    local-name: graft
+    uri: https://github.com/chadrockey/graft
+    version: android-husky
