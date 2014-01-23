@@ -155,3 +155,7 @@
     local-name: graft
     uri: https://github.com/chadrockey/graft
     version: android-husky
+- git:
+    local-name: nav_goal_manager
+    uri: https://github.com/creativa77/nav_goal_manager
+    version: master
