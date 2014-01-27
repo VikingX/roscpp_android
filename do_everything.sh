@@ -1,27 +1,27 @@
 #!/bin/bash
- 
+
 my_loc="$(cd "$(dirname $0)" && pwd)"
 source $my_loc/config.sh
 source $my_loc/utils.sh
- 
-if [ $# != 1 || $# != 2 ] || [ $1 == '-h' ] || [ $1 == '--help' ]; then
+
+if [[ $# -lt 1 ]] || [[ "$1" == '-h' ]] || [[ "$1" == '--help' ]]; then
     echo "Usage: $0 prefix_path"
     echo "  example: $0 /home/user/my_workspace"
     exit 1
 fi
- 
+
 if [ ! -d $1 ]; then
     mkdir -p $1
 fi
- 
+
 prefix=$(cd $1 && pwd)
- 
+
 run_cmd() {
     cmd=$1.sh
     shift
     $my_loc/$cmd $@ || die "$cmd $@ died with error code $?"
 }
- 
+
 if [ -z $ANDROID_NDK ] ; then
     die "ANDROID_NDK ENVIRONMENT NOT FOUND!"
 fi

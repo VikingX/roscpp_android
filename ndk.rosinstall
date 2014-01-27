@@ -39,7 +39,7 @@
     uri: https://github.com/ros/roscpp_core
 - git:
     local-name: ros_comm
-    uri: https://github.com/chadrockey/ros_comm
+    uri: https://github.com/VikingX/ros_comm
     version: android
 - git:
     local-name: bond
@@ -47,11 +47,11 @@
     version: release/hydro/bond/1.7.13-0
 - git:
     local-name: bondcpp
-    uri: https://github.com/chadrockey/bondcpp
+    uri: https://github.com/VikingX/bondcpp
     version: android
 - git:
     local-name: class_loader
-    uri: https://github.com/chadrockey/class_loader.git
+    uri: https://github.com/VikingX/class_loader.git
     version: android
 - git:
     local-name: depthimage_to_laserscan
@@ -62,7 +62,7 @@
     version: release/hydro/std_msgs/0.5.8-0
 - git:
     local-name: dynamic_reconfigure
-    uri: https://github.com/chadrockey/dynamic_reconfigure.git
+    uri: https://github.com/VikingX/dynamic_reconfigure.git
     version: android
 - git:
     local-name: image_geometry
@@ -70,19 +70,19 @@
     version: release/hydro/image_geometry/1.10.11-0
 - git:
     local-name: image_transport
-    uri: https://github.com/chadrockey/image_transport
+    uri: https://github.com/VikingX/image_transport
     version: android
 - git:
     local-name: nodelet
-    uri: https://github.com/chadrockey/nodelet_core
+    uri: https://github.com/VikingX/nodelet_core
     version: android
 - git:
     local-name: pluginlib
-    uri: https://github.com/chadrockey/pluginlib
+    uri: https://github.com/VikingX/pluginlib
     version: android
 - git:
     local-name: roslib
-    uri: https://github.com/chadrockey/roslib
+    uri: https://github.com/VikingX/roslib
     version: master
 - git:
     local-name: common_msgs
@@ -94,23 +94,23 @@
     version: release/hydro/smclib/1.7.13-0
 - git:
     local-name: rospack
-    uri: https://github.com/chadrockey/rospack
+    uri: https://github.com/VikingX/rospack
     version: android
 - git:
     local-name: geometry_experiemental
-    uri: https://github.com/chadrockey/geometry_experimental
+    uri: https://github.com/VikingX/geometry_experimental
     version: android_cpp
 - git:
     local-name: navigation
-    uri: https://github.com/chadrockey/navigation
+    uri: https://github.com/VikingX/navigation
     version: no_plugins
 - git:
     local-name: actionlib
-    uri: https://github.com/tulku/actionlib
+    uri: https://github.com/VikingX/actionlib
     version: android
 - git:
     local-name: tf
-    uri: https://github.com/tulku/tf
+    uri: https://github.com/VikingX/tf
     version: android
 - git:
     local-name: angles
@@ -125,7 +125,7 @@
     version: hydro-devel
 - git:
     local-name: perception_pcl
-    uri: https://github.com/chadrockey/perception_pcl
+    uri: https://github.com/VikingX/perception_pcl
     version: android
 - git:
     local-name: laser_geometry
@@ -145,7 +145,7 @@
     version: hydro-devel
 - git:
     local-name: diagnostics
-    uri: https://github.com/chadrockey/diagnostics
+    uri: https://github.com/VikingX/diagnostics
     version: android
 - git:
     local-name: laser_proc
@@ -153,7 +153,7 @@
     version: hydro-devel
 - git:
     local-name: graft
-    uri: https://github.com/chadrockey/graft
+    uri: https://github.com/VikingX/graft
     version: android-husky
 - git:
     local-name: nav_goal_manager
