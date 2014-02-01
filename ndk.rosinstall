@@ -37,6 +37,7 @@
 - git:
     local-name: roscpp_core
     uri: https://github.com/ros/roscpp_core
+    version: hydro-devel
 - git:
     local-name: ros_comm
     uri: https://github.com/VikingX/ros_comm
@@ -64,10 +65,6 @@
     local-name: dynamic_reconfigure
     uri: https://github.com/VikingX/dynamic_reconfigure.git
     version: android
-- git:
-    local-name: image_geometry
-    uri: https://github.com/ros-gbp/vision_opencv-release.git
-    version: release/hydro/image_geometry/1.10.11-0
 - git:
     local-name: image_transport
     uri: https://github.com/VikingX/image_transport
@@ -159,3 +156,8 @@
     local-name: nav_goal_manager
     uri: https://github.com/creativa77/nav_goal_manager
     version: master
+- git:
+    local-name: vision_opencv
+    uri: https://github.com/VikingX/vision_opencv.git
+    version: groovy-devel
+
