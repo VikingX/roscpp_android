@@ -84,7 +84,7 @@
 - git:
     local-name: common_msgs
     uri: https://github.com/ros/common_msgs
-    version: hydro-devel
+    version: c7fb58a370558e9049a26a3d9b5e7ab339ff3e0a
 - git:
     local-name: smclib
     uri: https://github.com/ros-gbp/bond_core-release.git
@@ -157,7 +157,7 @@
     uri: https://github.com/creativa77/nav_goal_manager
     version: master
 - git:
-    local-name: vision_opencv
-    uri: https://github.com/VikingX/vision_opencv.git
-    version: groovy-devel
+    local-name: image_geometry
+    uri: https://github.com/ros-gbp/vision_opencv-release.git
+    version: release/hydro/image_geometry/1.10.11-0
 
